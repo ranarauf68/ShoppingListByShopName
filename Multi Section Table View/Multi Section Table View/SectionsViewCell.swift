@@ -137,7 +137,7 @@ class SectionsViewCell: UITableViewCell {
             let strUOM = String(SectionsData().extractItemUOM(sections[secIndex].items[itemIndex]))
             
             
-            itemHist = ItemHistoryData().additemHistory(itemHist, pItem: strItemName, pShop: strShopName, pDateTime: strDateTime, pQuantity: strQuantity, pUOM: strUOM!)
+            itemHist = ItemHistoryData().additemHistory(itemHist, pItem: strItemName, pShop: strShopName, pDateTime: strDateTime, pQuantity: strQuantity, pUOM: strUOM)
             
         
         }

@@ -36,7 +36,7 @@ class addEditShop: UIViewController, UIPickerViewDataSource, UIPickerViewDelegat
         
         if sections.count > 0 {
             let messageAlert: String = "This will delete the shop: " + SectionsData().extractShopName(sections[storeRow].heading) + " and all it's items. Are you sure?"
-            let refreshAlert = UIAlertController(title: "Warning", message: messageAlert, preferredStyle: UIAlertControllerStyle.alert)
+            let refreshAlert = UIAlertController(title: "Warning", message: messageAlert, preferredStyle: UIAlertController.Style.alert)
         
             refreshAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction) in
                 print("Handle Ok logic here", terminator: "")
@@ -464,9 +464,9 @@ class addEditShop: UIViewController, UIPickerViewDataSource, UIPickerViewDelegat
     }
     
     func displayAlert (_ txtTitle: String, txtMessage: String, txtButtonTitle: String) {
-        let alertController = UIAlertController(title: txtTitle, message: txtMessage, preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: txtTitle, message: txtMessage, preferredStyle: UIAlertController.Style.alert)
         
-        alertController.addAction(UIAlertAction(title: txtButtonTitle, style: UIAlertActionStyle.default, handler: nil))
+        alertController.addAction(UIAlertAction(title: txtButtonTitle, style: UIAlertAction.Style.default, handler: nil))
         
         self.present(alertController, animated: true, completion: nil)
     }
@@ -476,9 +476,9 @@ class addEditShop: UIViewController, UIPickerViewDataSource, UIPickerViewDelegat
         keyboardToolbar.barStyle = UIBarStyle.default
         
         keyboardToolbar.items = [
-            UIBarButtonItem(title: "Save", style: UIBarButtonItemStyle.plain, target: self, action: #selector(addEditShop.saveDataToolbar)),
-            UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil),
-            UIBarButtonItem(title: "Undo", style: UIBarButtonItemStyle.plain, target: self, action: #selector(addEditShop.cancelToolbar))
+            UIBarButtonItem(title: "Save", style: UIBarButtonItem.Style.plain, target: self, action: #selector(addEditShop.saveDataToolbar)),
+            UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil),
+            UIBarButtonItem(title: "Undo", style: UIBarButtonItem.Style.plain, target: self, action: #selector(addEditShop.cancelToolbar))
         ]
         
         keyboardToolbar.sizeToFit()
@@ -491,7 +491,7 @@ class addEditShop: UIViewController, UIPickerViewDataSource, UIPickerViewDelegat
         shopZipText.inputAccessoryView = keyboardToolbar
     }
 
-    func saveDataToolbar() {
+    @objc func saveDataToolbar() {
         if editMode == "Edit" {
             
             if sections.count > 0 {
@@ -526,7 +526,7 @@ class addEditShop: UIViewController, UIPickerViewDataSource, UIPickerViewDelegat
         }
     }
     
-    func cancelToolbar() {
+    @objc func cancelToolbar() {
         
         populateShopDetail()
         hideKeyboard()
@@ -541,7 +541,7 @@ class addEditShop: UIViewController, UIPickerViewDataSource, UIPickerViewDelegat
         
     }
 
-    func cancelAddToolbar() {
+    @objc func cancelAddToolbar() {
         
         populateFirstShop()
         hideKeyboard()
@@ -565,9 +565,9 @@ class addEditShop: UIViewController, UIPickerViewDataSource, UIPickerViewDelegat
         keyboardAddToolbar.barStyle = UIBarStyle.default
         
         keyboardAddToolbar.items = [
-            UIBarButtonItem(title: "Save", style: UIBarButtonItemStyle.plain, target: self, action: #selector(addEditShop.saveDataToolbar)),
-            UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil),
-            UIBarButtonItem(title: "Undo", style: UIBarButtonItemStyle.plain, target: self, action: #selector(addEditShop.cancelAddToolbar))
+            UIBarButtonItem(title: "Save", style: UIBarButtonItem.Style.plain, target: self, action: #selector(addEditShop.saveDataToolbar)),
+            UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil),
+            UIBarButtonItem(title: "Undo", style: UIBarButtonItem.Style.plain, target: self, action: #selector(addEditShop.cancelAddToolbar))
         ]
         
         keyboardAddToolbar.sizeToFit()

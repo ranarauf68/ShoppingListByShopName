@@ -84,7 +84,7 @@ class addItemViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
         } else {
         
-            let refreshAlert = UIAlertController(title: "Delete Section", message: "Are you sure you want to delete " + sectionNameLabel.text! + "?", preferredStyle: UIAlertControllerStyle.alert)
+            let refreshAlert = UIAlertController(title: "Delete Section", message: "Are you sure you want to delete " + sectionNameLabel.text! + "?", preferredStyle: UIAlertController.Style.alert)
         
             refreshAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction) in
                 print(self.indexRow, terminator: "")
@@ -153,9 +153,9 @@ class addItemViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     }
     
     func displayAlert (_ txtTitle: String, txtMessage: String, txtButtonTitle: String) {
-        let alertController = UIAlertController(title: txtTitle, message: txtMessage, preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: txtTitle, message: txtMessage, preferredStyle: UIAlertController.Style.alert)
         
-        alertController.addAction(UIAlertAction(title: txtButtonTitle, style: UIAlertActionStyle.default, handler: nil))
+        alertController.addAction(UIAlertAction(title: txtButtonTitle, style: UIAlertAction.Style.default, handler: nil))
         
         self.present(alertController, animated: true, completion: nil)
     }

@@ -59,9 +59,9 @@ class SectionsViewController: UITableViewController {
     }
     
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
-        if editingStyle == UITableViewCellEditingStyle.delete {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
             
             
 //            sections[indexPath.section].items.removeAtIndex(indexPath.row)
@@ -127,7 +127,7 @@ class SectionsViewController: UITableViewController {
         
         
         tableView.estimatedRowHeight = 68.0
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
 //        self.tableView.contentInset = UIEdgeInsetsMake(80, 0, 0, 0)
         
         if sections.count == 0 {
@@ -139,9 +139,9 @@ class SectionsViewController: UITableViewController {
         }
     }
     
-    func longPress(_ longPressGestureRecognizer: UILongPressGestureRecognizer) {
+    @objc func longPress(_ longPressGestureRecognizer: UILongPressGestureRecognizer) {
         
-        if longPressGestureRecognizer.state == UIGestureRecognizerState.began {
+        if longPressGestureRecognizer.state == UIGestureRecognizer.State.began {
             
             let touchPoint = longPressGestureRecognizer.location(in: self.view)
             if let indexPath = tableView.indexPathForRow(at: touchPoint) {
@@ -232,7 +232,7 @@ class SectionsViewController: UITableViewController {
         UIView.animate(withDuration: 0.5, animations: { () -> Void in
             self.statusLabel.center = CGPoint(x: (self.view.frame.size.width - self.statusLabel.frame.size.width)/2 , y: self.statusLabel.center.y)
             
-            self.statusLabel.bringSubview(toFront: self.view)
+            self.statusLabel.bringSubviewToFront(self.view)
             
             print("label displayed")
         })

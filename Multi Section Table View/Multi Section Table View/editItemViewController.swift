@@ -164,7 +164,7 @@ class editItemViewController: UIViewController, UITextFieldDelegate, UIPickerVie
 //            itemUOMPickerViewConstraint.constant = 100
             itemUOMPickerHeight.constant = 100
 //            itemUOMPickerBottom.constant = 20
-            bottomBar.bringSubview(toFront: bottomBar)
+            bottomBar.bringSubviewToFront(bottomBar)
 //            if shopPickerView.hidden == false {
 //                var pickerRect = shopPickerView.frame
 //                pickerRect.size.height = 100
@@ -185,7 +185,7 @@ class editItemViewController: UIViewController, UITextFieldDelegate, UIPickerVie
 //
 //            
 //            }
-            bottomBar.bringSubview(toFront: bottomBar)
+            bottomBar.bringSubviewToFront(bottomBar)
 
             print("Portrait", terminator: "")
         }
@@ -201,7 +201,7 @@ class editItemViewController: UIViewController, UITextFieldDelegate, UIPickerVie
         shopToolbar.tintColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
         shopToolbar.sizeToFit()
         
-        let doneShopButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.bordered, target: self, action: #selector(editItemViewController.doneShopPicker))
+        let doneShopButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.bordered, target: self, action: #selector(editItemViewController.doneShopPicker))
         shopToolbar.setItems([doneShopButton], animated: true)
         shopToolbar.isUserInteractionEnabled = true
         
@@ -243,7 +243,7 @@ class editItemViewController: UIViewController, UITextFieldDelegate, UIPickerVie
         pickerToolbar.tintColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
         pickerToolbar.sizeToFit()
 
-        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.bordered, target: self, action: #selector(editItemViewController.donePicker))
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.bordered, target: self, action: #selector(editItemViewController.donePicker))
 //        var spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
 //        var cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Bordered, target: self, action: "canclePicker")
         
@@ -274,7 +274,7 @@ class editItemViewController: UIViewController, UITextFieldDelegate, UIPickerVie
         
         self.navigationItem.hidesBackButton = true
         
-        let newBackButton = UIBarButtonItem(title: "Shopping List", style: UIBarButtonItemStyle.bordered, target: self, action: #selector(editItemViewController.back(_:)))
+        let newBackButton = UIBarButtonItem(title: "Shopping List", style: UIBarButtonItem.Style.bordered, target: self, action: #selector(editItemViewController.back(_:)))
         
         
         self.navigationItem.leftBarButtonItem = newBackButton;
@@ -302,14 +302,14 @@ class editItemViewController: UIViewController, UITextFieldDelegate, UIPickerVie
         performSegue(withIdentifier: "addShop", sender: self)
     }
     
-    func donePicker() {
+    @objc func donePicker() {
         itemUOMpickerView.removeFromSuperview()
         itemUOMpickerView.isHidden = true
         pickerToolbar.isHidden =  true
         
     }
 
-    func doneShopPicker() {
+    @objc func doneShopPicker() {
         shopPickerView.removeFromSuperview()
         shopPickerView.isHidden = true
         shopToolbar.isHidden =  true
@@ -464,7 +464,7 @@ class editItemViewController: UIViewController, UITextFieldDelegate, UIPickerVie
     }
     
     
-    func back(_ sender: UIBarButtonItem) {
+    @objc func back(_ sender: UIBarButtonItem) {
         
         self.navigationController?.popViewController(animated: true)
 
@@ -566,9 +566,9 @@ class editItemViewController: UIViewController, UITextFieldDelegate, UIPickerVie
     }
     
     func displayAlert (_ txtTitle: String, txtMessage: String, txtButtonTitle: String) {
-        let alertController = UIAlertController(title: txtTitle, message: txtMessage, preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: txtTitle, message: txtMessage, preferredStyle: UIAlertController.Style.alert)
         
-        alertController.addAction(UIAlertAction(title: txtButtonTitle, style: UIAlertActionStyle.default, handler: nil))
+        alertController.addAction(UIAlertAction(title: txtButtonTitle, style: UIAlertAction.Style.default, handler: nil))
         
         self.present(alertController, animated: true, completion: nil)
     }
@@ -719,9 +719,9 @@ class editItemViewController: UIViewController, UITextFieldDelegate, UIPickerVie
         keyboardToolbar.barStyle = UIBarStyle.default
         
         keyboardToolbar.items = [
-            UIBarButtonItem(title: "Save", style: UIBarButtonItemStyle.plain, target: self, action: #selector(editItemViewController.saveDataToolbar)),
-            UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil),
-            UIBarButtonItem(title: "Undo", style: UIBarButtonItemStyle.plain, target: self, action: #selector(editItemViewController.undoToolbar))
+            UIBarButtonItem(title: "Save", style: UIBarButtonItem.Style.plain, target: self, action: #selector(editItemViewController.saveDataToolbar)),
+            UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil),
+            UIBarButtonItem(title: "Undo", style: UIBarButtonItem.Style.plain, target: self, action: #selector(editItemViewController.undoToolbar))
         ]
         
         keyboardToolbar.sizeToFit()
@@ -733,7 +733,7 @@ class editItemViewController: UIViewController, UITextFieldDelegate, UIPickerVie
 
     }
     
-    func saveDataToolbar() {
+    @objc func saveDataToolbar() {
         if validateData() == true {
             saveData()
             
@@ -749,7 +749,7 @@ class editItemViewController: UIViewController, UITextFieldDelegate, UIPickerVie
 
     }
     
-    func undoToolbar() {
+    @objc func undoToolbar() {
         if editMode == "Edit"    {
             loadDataFromDefaults()
         } else {
